@@ -6,8 +6,8 @@ import (
 	"io"
 	"testing"
 
+	"github.com/odincare/odicom/dicomio"
 	"github.com/stretchr/testify/require"
-	"odicom/dicomio"
 )
 
 func TestBasic(t *testing.T) {

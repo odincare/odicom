@@ -3,7 +3,7 @@ package dicomio
 import (
 	"encoding/binary"
 	"fmt"
-	"odicom/dicomuid"
+	"github.com/odincare/odicom/dicomuid"
 )
 
 // StandardTransferSyntaxes is the list of standard transfer syntaxes

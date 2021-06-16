@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"odicom/dicomtag"
+	"github.com/odincare/odicom/dicomtag"
 )
 
 // DirectoryRecord contains info about one DICOM file mentioned in DICOMDIR.

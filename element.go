@@ -4,9 +4,9 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"github.com/odincare/odicom/dicomio"
+	"github.com/odincare/odicom/dicomtag"
 	"io"
-	"odicom/dicomio"
-	"odicom/dicomtag"
 	"os"
 	"strings"
 

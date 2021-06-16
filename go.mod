@@ -1,4 +1,4 @@
-module odicom
+module github.com/odincare/odicom
 
 go 1.15
 

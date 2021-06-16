@@ -1,7 +1,7 @@
 package dicomuid_test
 
 import (
-	"odicom/dicomuid"
+	"github.com/odincare/odicom/dicomuid"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

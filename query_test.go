@@ -3,9 +3,9 @@ package dicom_test
 import (
 	"testing"
 
+	"github.com/odincare/odicom/dicomtag"
 	"github.com/stretchr/testify/assert"
 	"odicom"
-	"odicom/dicomtag"
 )
 
 func TestParse0(t *testing.T) {

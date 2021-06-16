@@ -3,10 +3,10 @@ package dicom_test
 import (
 	"bytes"
 	"fmt"
+	"github.com/odincare/odicom/dicomtag"
 	"github.com/stretchr/testify/require"
 	"log"
 	"odicom"
-	"odicom/dicomtag"
 	"testing"
 )
 

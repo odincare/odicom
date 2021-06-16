@@ -3,9 +3,9 @@ package dicom
 import (
 	"encoding/binary"
 	"fmt"
+	"github.com/odincare/odicom/dicomio"
+	"github.com/odincare/odicom/dicomtag"
 	"io"
-	"odicom/dicomio"
-	"odicom/dicomtag"
 	"os"
 
 	"github.com/sirupsen/logrus"

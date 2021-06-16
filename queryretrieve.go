@@ -2,7 +2,7 @@ package dicom
 
 import (
 	"fmt"
-	"odicom/dicomtag"
+	"github.com/odincare/odicom/dicomtag"
 
 	"github.com/gobwas/glob"
 	"github.com/sirupsen/logrus"

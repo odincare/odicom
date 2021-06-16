@@ -5,12 +5,12 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/odincare/odicom/dicomio"
+	"github.com/odincare/odicom/dicomtag"
+	"github.com/odincare/odicom/dicomuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"odicom"
-	"odicom/dicomio"
-	"odicom/dicomtag"
-	"odicom/dicomuid"
 )
 
 func testWriteDataElement(t *testing.T, bo binary.ByteOrder, implicit dicomio.IsImplicitVR) {
