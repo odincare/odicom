@@ -1,6 +1,7 @@
 package dicom
 
 import (
+	"bytes"
 	"encoding/binary"
 	"errors"
 	"fmt"
@@ -837,6 +838,10 @@ func ReadDataSet(in io.Reader, options ReadOptions) (*DataSet, error) {
 		}
 	}
 	return file, buffer.Error()
+}
+
+func ReadDataSetInBytes(data []byte, options ReadOptions) (*DataSet, error) {
+	return ReadDataSet(bytes.NewReader(data), options)
 }
 
 func getTransferSyntax(ds *DataSet) (byteorder binary.ByteOrder, implicit dicomio.IsImplicitVR, err error) {
