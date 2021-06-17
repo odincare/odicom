@@ -461,6 +461,30 @@ func WriteDataSet(out io.Writer, ds *DataSet) error {
 	e.PopTransferSyntax()
 	return e.Error()
 }
+func WriteDataSetToBytes(e *dicomio.Encoder, ds *DataSet) error {
+	var metaElems []*Element
+	for _, elem := range ds.Elements {
+		if elem.Tag.Group == dicomtag.MetadataGroup {
+			metaElems = append(metaElems, elem)
+		}
+	}
+	WriteFileHeader(e, metaElems)
+	if e.Error() != nil {
+		return e.Error()
+	}
+	endian, implicit, err := getTransferSyntax(ds)
+	if err != nil {
+		return err
+	}
+	e.PushTransferSyntax(endian, implicit)
+	for _, elem := range ds.Elements {
+		if elem.Tag.Group != dicomtag.MetadataGroup {
+			WriteElement(e, elem)
+		}
+	}
+	e.PopTransferSyntax()
+	return e.Error()
+}
 
 // WriteDataSetToFile writes "ds" to the given file. If the file already exists,
 // existing contents are clobbered. Else, the file is newly created.

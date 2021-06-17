@@ -1,12 +1,11 @@
 package dicom_test
 
 import (
-	"bytes"
 	"fmt"
+	"github.com/odincare/odicom"
 	"github.com/odincare/odicom/dicomtag"
 	"github.com/stretchr/testify/require"
 	"log"
-	"odicom"
 	"testing"
 )
 
@@ -53,19 +52,19 @@ func Example_updateExistingFile() {
 	}
 	patientID.Value = []interface{}{"Zhang San"}
 
-	buf := bytes.Buffer{}
-	if err := dicom.WriteDataSet(&buf, ds); err != nil {
+	//buf := bytes.Buffer{}
+	//if err := dicom.WriteDataSet(&buf, ds); err != nil {
+	//	panic(err)
+	//}
+	//
+	//ds2, err := dicom.ReadDataSet(&buf, dicom.ReadOptions{})
+	//if err != nil {
+	//	panic(err)
+	//}
+	if err := dicom.WriteDataSetToFile("examples/test_write.dcm", ds); err != nil {
 		panic(err)
 	}
-
-	ds2, err := dicom.ReadDataSet(&buf, dicom.ReadOptions{})
-	if err != nil {
-		panic(err)
-	}
-	if err := dicom.WriteDataSetToFile("examples/test_write.dcm", ds2); err != nil {
-		panic(err)
-	}
-	patientID, err = ds2.FindElementByTag(dicomtag.PatientID)
+	patientID, err = ds.FindElementByTag(dicomtag.PatientID)
 	if err != nil {
 		panic(err)
 	}
