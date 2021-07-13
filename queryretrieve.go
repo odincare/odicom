@@ -124,7 +124,7 @@ func queryElement(elem *Element, f *Element) (match bool, err error) {
 			return ok, nil
 		}
 	default:
-		logrus.Panic(fmt.Sprintf("Unknown data: %v", f))
+		return false, errors.New(fmt.Sprintf("Unknown data: %v", f))
 	}
 
 	return false, nil
