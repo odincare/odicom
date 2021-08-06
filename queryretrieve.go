@@ -2,10 +2,10 @@ package dicom
 
 import (
 	"fmt"
+
 	"github.com/odincare/odicom/dicomtag"
 
 	"github.com/gobwas/glob"
-	"github.com/sirupsen/logrus"
 )
 
 // 查询检查dataset是否符合QR condition "filter"。
@@ -124,7 +124,7 @@ func queryElement(elem *Element, f *Element) (match bool, err error) {
 			return ok, nil
 		}
 	default:
-		return false, errors.New(fmt.Sprintf("Unknown data: %v", f))
+		return false, fmt.Errorf("unknown data: %v", f)
 	}
 
 	return false, nil

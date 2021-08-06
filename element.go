@@ -5,11 +5,12 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/odincare/odicom/dicomio"
-	"github.com/odincare/odicom/dicomtag"
 	"io"
 	"os"
 	"strings"
+
+	"github.com/odincare/odicom/dicomio"
+	"github.com/odincare/odicom/dicomtag"
 
 	"github.com/sirupsen/logrus"
 )

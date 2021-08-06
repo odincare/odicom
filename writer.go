@@ -3,10 +3,11 @@ package dicom
 import (
 	"encoding/binary"
 	"fmt"
-	"github.com/odincare/odicom/dicomio"
-	"github.com/odincare/odicom/dicomtag"
 	"io"
 	"os"
+
+	"github.com/odincare/odicom/dicomio"
+	"github.com/odincare/odicom/dicomtag"
 
 	"github.com/sirupsen/logrus"
 )
@@ -272,10 +273,10 @@ func WriteElement(e *dicomio.Encoder, elem *Element) {
 			e.WriteBytes(bytes)
 		}
 	} else {
-		if elem.UndefinedLength {
-			e.SetErrorf("目前还不支持编码undefined-length的element: %v", elem)
-			return
-		}
+		// if elem.UndefinedLength {
+		// 	e.SetErrorf("目前还不支持编码undefined-length的element: %v", elem)
+		// 	return
+		// }
 
 		sube := dicomio.NewBytesEncoder(e.TransferSyntax())
 
