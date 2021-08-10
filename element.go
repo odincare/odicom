@@ -510,6 +510,7 @@ func ReadElement(d *dicomio.Decoder, options ReadOptions) *Element {
 		// 那个引用是专用于type=SQ的，所以他猜测
 		// <UN, undefinedLength> == <SQ, undefinedLength>
 		vr = "SQ"
+		elem.VR = vr
 	}
 
 	if tag == dicomtag.PixelData {
