@@ -8,8 +8,6 @@ import (
 
 	"github.com/odincare/odicom/dicomio"
 	"github.com/odincare/odicom/dicomtag"
-
-	"github.com/sirupsen/logrus"
 )
 
 // WriteFileHeader produces a Dicom file header. metaElements[] is be a list of
@@ -148,20 +146,20 @@ func WriteElement(e *dicomio.Encoder, elem *Element) {
 		} else {
 			vr = "UN"
 		}
-	} else {
-		if err == nil && entry.VR != vr {
-			if dicomtag.GetVRKind(elem.Tag, entry.VR) != dicomtag.GetVRKind(elem.Tag, vr) {
-				// The golang repl, is different. We can't continue
-				e.SetErrorf("dicom.WriteElement: VR value dismatch for tag %s. Element.VR=%v, but Dicom standard defines VR to be %v",
-					dicomtag.DebugString(elem.Tag), vr, entry.VR)
-				return
-			}
-			logrus.Warnf("dicom.WriteElement: VR value mismatch for tag %s. Element.VR=%v, but DICOM standard defines VR to be %v (continuing)",
-				dicomtag.DebugString(elem.Tag), vr, entry.VR)
-		}
 	}
-
-	dicomio.DoAssert(vr != "", vr)
+	// ! 如果存在多个标准但是这里没标注/处理出来的话 最好的情况就是不作处理
+	//  else {
+	// 	if err == nil && entry.VR != vr {
+	// 		if dicomtag.GetVRKind(elem.Tag, entry.VR) != dicomtag.GetVRKind(elem.Tag, vr) {
+	// 			// The golang repl, is different. We can't continue
+	// 			e.SetErrorf("dicom.WriteElement: VR value dismatch for tag %s. Element.VR=%v, but Dicom standard defines VR to be %v",
+	// 				dicomtag.DebugString(elem.Tag), vr, entry.VR)
+	// 			return
+	// 		}
+	// 		logrus.Warnf("dicom.WriteElement: VR value mismatch for tag %s. Element.VR=%v, but DICOM standard defines VR to be %v (continuing)",
+	// 			dicomtag.DebugString(elem.Tag), vr, entry.VR)
+	// 	}
+	// }
 
 	if elem.Tag == dicomtag.PixelData {
 		if len(elem.Value) != 1 {
