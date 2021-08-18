@@ -63,6 +63,7 @@ var htmlEncodingNames = map[string]string{
 	"ISO 2022 IR 166": "iso-ir-166",
 	"ISO 2022 IR 87":  "iso-2022-jp",
 	"ISO_IR 192":      "utf-8",
+	"GB18030":         "utf-8",
 }
 
 // ParseSpecificCharacterSet 覆盖DICOM character的编码名，
